@@ -2,11 +2,11 @@ function [check, cordif_1, cordif_2] =CheckCorr(input,output)
 
 for dim=1:2 %run correlation test for both dimensions
     j=1;
-while j<360 %rotate vector component, 1 degree at a time, and search for best correlation
-    R=rotz(1); 
-    for i=1:size(output,2)
-         output(:,i)=R*output(:,i);
-    end
+    while j<360 %rotate vector component, 1 degree at a time, and search for best correlation
+        R=rotz(1);
+        for i=1:size(output,2)
+            output(:,i)=R*output(:,i);
+        end
         %calculate correlation between current rotation of the output
         %channel VS input
         correlation(dim,j)=sum((normalize(output(dim,:)).^2).*(normalize(input(dim,:)).^2));
